@@ -18,7 +18,7 @@ class ChatService {
     }
 
     public static function store(Request $request) {
-        $yourApiKey = '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';
+        $yourApiKey = env('OPEN_API_KEY');
         $client = OpenAI::client($yourApiKey);
         
         $result = $client->completions()->create([
