@@ -1,0 +1,39 @@
+.div_container {
+    @apply flex-1 sm:p-6 justify-between flex flex-col p-0;
+}
+
+.div_inner_container {
+    @apply flex flex-col space-y-4 p-3 overflow-y-auto font-bold;
+}
+
+.system_message_container {
+    @apply flex flex-col space-y-2 max-w-xs mx-2 order-2 items-start text-lg;
+}
+
+.system_message {
+    @apply px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600;
+}
+
+.user_message_container {
+    @apply flex items-end justify-end text-lg;
+}
+
+.user_message_inner_contianer {
+    @apply flex flex-col space-y-2 text-lg max-w-xs mx-2 order-1 items-end;
+}
+
+.user_message {
+    @apply px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white;
+}
+
+.input_container {
+    @apply border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0;
+}
+
+.input_text {
+    @apply w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3;
+}
+
+.input_button {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none ml-3;
+}
