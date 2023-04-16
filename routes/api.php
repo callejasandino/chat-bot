@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth:sanctum'], function ($route) {
 Route::group(['prefix' => 'chat'], function ($route){
     $route->get('/', [ChatController::class, 'index']);
     $route->post('/store', [ChatController::class, 'store']);
-    $route->post('/delete/{id}', [ChatController::class, 'delete']);
+    $route->post('/delete', [ChatController::class, 'delete']);
 });
 
 Route::group(['prefix' => 'faq'], function ($route){

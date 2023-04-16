@@ -16,7 +16,7 @@ class ChatController extends Controller
         return ChatService::store($request);
     }
 
-    public function delete($id) {
-        return ChatService::delete($id);
+    public function delete() {
+        return ChatService::delete();
     }
 }

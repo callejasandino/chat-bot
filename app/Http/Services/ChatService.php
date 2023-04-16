@@ -34,20 +34,7 @@ class ChatService {
         ]);
     }
 
-    public static function delete($id) {
-        $authUser = Auth::user();
-        $chat = Chat::where('id', $id)->where('user_id', $authUser->id)->first();
-        
-        if(!$chat){
-            return response()->json([
-                'chats' => 'Message not fopund'
-            ]);
-        }
-
-        $chat->delete();
-
-        return response()->json([
-            'chats' => 'Message deleted'
-        ]);
+    public static function delete() {
+        Chat::truncate();
     }
 }

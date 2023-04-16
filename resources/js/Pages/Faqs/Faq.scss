@@ -7,7 +7,7 @@
 }
 
 .h2 {
-    @apply mb-8 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white
+    @apply mb-8 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white;
 }
 
 .svg {
@@ -19,6 +19,29 @@
 }
 
 .answer {
-    @apply text-gray-500 dark:text-gray-400 ;
+    @apply text-gray-500 dark:text-gray-400;
 }
 
+.elementToFadeInAndOut {
+    opacity: 0;
+    -webkit-animation: fadeinout 2s forwards;
+    animation: fadeinout 2s forwards;
+}
+
+@-webkit-keyframes fadeinout {
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeinout {
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

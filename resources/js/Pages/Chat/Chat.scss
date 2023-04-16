@@ -37,3 +37,27 @@
 .input_button {
     @apply inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none ml-3;
 }
+
+.elementToFadeInAndOut {
+    opacity: 0;
+    -webkit-animation: fadeinout 2s forwards;
+    animation: fadeinout 1s forwards;
+}
+
+@-webkit-keyframes fadeinout {
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeinout {
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
