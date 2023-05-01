@@ -4,7 +4,7 @@ import { useFaqStore } from "../../Store/faq";
 export default {
     setup() {
         let faqs = ref();
-        let isFaqsExists = reactive(false);
+        let isFaqsExists = ref(false);
         let faqStore = useFaqStore();
 
         let index = async () => {
@@ -13,9 +13,9 @@ export default {
             faqs.value = faqStore.getFaq;
 
             if (faqs.value.faqs.length > 0) {
-                isFaqsExists = true;
+                isFaqsExists.value = true;
             } else {
-                isFaqsExists = false;
+                isFaqsExists.value = false;
             }
         };
 

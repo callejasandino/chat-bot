@@ -10,7 +10,7 @@
                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
                     alt="logo"
                 />
-                Chatbot
+                SPARTA / SPARTU Chatbot
             </a>
             <div class="field_container">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -71,18 +71,11 @@
                                     >
                                 </div>
                             </div>
-                            <a href="#" class="forgot_password"
-                                >Forgot password?</a
-                            >
                         </div>
 
                         <button type="submit" class="sign_in_button">
                             Sign in
                         </button>
-
-                        <p class="dont_have_account_yet">
-                            Don’t have an account yet? <a href="#">Sign up</a>
-                        </p>
                     </form>
                 </div>
             </div>

@@ -5,7 +5,7 @@
             <div
                 class="grid pt-8 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700"
             >
-                <div v-if="faqs">
+                <div v-if="faqs" class="elementToFadeInAndOut">
                     <div class="mb-10" v-for="faq in faqs.faqs" :key="faq.id">
                         <h2 class="question">
                             <svg
@@ -27,8 +27,8 @@
                         </p>
                     </div>
                 </div>
-                <div v-if="!isFaqsExists" class="elementToFadeInAndOut">
-                    <div class="mb-20 mt-20">
+                <div class="elementToFadeInAndOut">
+                    <div v-if="isFaqsExists === false" class="mb-20 mt-20">
                         <p class="font-bold text-4xl text-white text-center">
                             No FAQ's to show
                         </p>

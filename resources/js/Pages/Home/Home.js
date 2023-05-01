@@ -6,20 +6,24 @@ import Cookies from "js-cookie";
 
 export default defineComponent({
     setup() {
-        const bearer = Cookies.get("bearer");
-        let auth = reactive({
-            logged: 0,
-        });
+        let bearer = null;
+        let auth = ref(false);
         const authStore = useAuthStore();
 
         onMounted(() => {
-            bearer != null ? (auth.logged = 1) : (auth.logged = 0);
+            bearer = Cookies.get("bearer");
+
+            if (bearer != null) {
+                auth.value = true;
+            } else {
+                auth.value = false;
+            }
         });
 
         const logout = async () => {
             await authStore.logout();
+            auth.value = false;
             await Cookies.remove("bearer");
-            auth.logged = authStore.getAuth;
             await router.push("/");
         };
 

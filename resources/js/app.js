@@ -1,12 +1,11 @@
 import { createApp } from "vue";
-import App from './App.vue';
-import router from './routes';
+import App from "./App.vue";
+import router from "./routes";
 import { createPinia } from "pinia";
 import axios from "axios";
-const pinia = createPinia()
+const pinia = createPinia();
 const app = createApp(App);
-import Cookies from 'js-cookie';
-// import axios from 'axios';
+import Cookies from "js-cookie";
 
 app.use(pinia);
 
@@ -19,7 +18,7 @@ axios.interceptors.request.use(
         config.headers = {
             Authorization: `Bearer ${authToken}`,
         };
-    
+
         config.url = `https://chat-bot.test/${config.url}`;
         return await config;
     },
@@ -30,4 +29,4 @@ axios.interceptors.request.use(
 
 app.use(router);
 
-app.mount('#app');
+app.mount("#app");

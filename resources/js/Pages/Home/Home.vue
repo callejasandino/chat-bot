@@ -54,13 +54,17 @@
                         >Chat</router-link
                     >
                 </div>
-                <!-- 
-                <div v-if="auth.logged == 1">
-                    <button type="button" @click="logout" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Logout</button>
-                </div>
-                <div v-else>
 
-                </div> -->
+                <div v-if="auth">
+                    <button
+                        type="button"
+                        @click="logout"
+                        class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+                    >
+                        Logout
+                    </button>
+                </div>
+                <div v-else></div>
             </div>
         </nav>
 
