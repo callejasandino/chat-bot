@@ -1,50 +1,45 @@
-import axios from "axios";
 import { ref, onMounted, defineComponent, reactive } from "vue";
-import router from "../../routes";
-import { useFaqStore } from "../../Store/faq";
-import Cookies from "js-cookie";
 import { useQandaStore } from "../../Store/qanda";
-
+import axios from "axios";
 export default defineComponent({
     setup() {
         const user = ref();
-        const faqs = ref();
+        const qandas = ref();
         let isModalOpen = ref(false);
-        const faqStore = useFaqStore();
         const qandaStore = useQandaStore();
+        const qanda = reactive({
+            question: "",
+            answer: "",
+        });
         let updateID = ref(0);
-        const faq = reactive({
+
+        const qandaUpdateData = reactive({
             question: "",
             answer: "",
         });
-
-        const faqUpdateData = reactive({
-            question: "",
-            answer: "",
-        });
-
-        const index = async () => {
-            await faqStore.index();
-
-            faqs.value = faqStore.getFaq;
-
-            console.log(faqs.value.faqs[0]);
-        };
 
         const openUpdateModal = async (id, question, answer) => {
             updateID = id;
             isModalOpen.value = true;
-            console.log(isModalOpen.value);
-            faqUpdateData.question = question;
-            faqUpdateData.answer = answer;
+            qandaUpdateData.question = question;
+            qandaUpdateData.answer = answer;
         }
         
         const closeUpdateModal = async () => {
             updateID = 0;
             isModalOpen.value = false;
-            faqUpdateData.question = '';
-            faqUpdateData.answer = '';
+            qandaUpdateData.question = '';
+            qandaUpdateData.answer = '';
         }
+
+
+        const index = async () => {
+            await qandaStore.index();
+
+            qandas.value = qandaStore.getQanda;
+
+            console.log(qandas.value.qandas[0]);
+        };
 
         onMounted(async () => {
             await axios
@@ -60,60 +55,61 @@ export default defineComponent({
         });
 
         const store = async () => {
-            if (faq.question == "" && faq.answer == "") {
+            if (qanda.question == "" && qanda.answer == "") {
                 alert("Question and answer must not be empty!");
                 return;
             }
 
-            const faqData = {
-                question: faq.question,
-                answer: faq.answer,
+            const qandaData = {
+                question: qanda.question,
+                answer: qanda.answer,
             };
 
-            await faqStore.store(faqData);
+            await qandaStore.store(qandaData);
             await index();
-            faq.question = "";
-            faq.answer = "";
+            qanda.question = "";
+            qanda.answer = "";
         };
 
         const update = async () => {
-            if (faqUpdateData.question == "" && faqUpdateData.answer == "") {
+            if (qandaUpdateData.question == "" && qandaUpdateData.answer == "") {
                 alert("Question and answer must not be empty!");
                 return;
             }
 
-            const faqData = {
-                question: faqUpdateData.question,
-                answer: faqUpdateData.answer,
+            const qandaData = {
+                question: qandaUpdateData.question,
+                answer: qandaUpdateData.answer,
             };
 
-            await faqStore.update(updateID, faqData);
+            await qandaStore.update(updateID, qandaData);
             await index();
             updateID = 0;
-            faqUpdateData.question = "";
-            faqUpdateData.answer = "";
+            qandaUpdateData.question = "";
+            qandaUpdateData.answer = "";
             isModalOpen.value = false;
         };
+
 
         const download = async () => {
             await qandaStore.download();
         };
 
         const destroy = async (id) => {
-            await faqStore.delete(id);
+            await qandaStore.delete(id);
             await index();
-            faq.question = "";
-            faq.answer = "";
+            qanda.question = "";
+            qanda.answer = "";
         };
 
         return {
             openUpdateModal,
             closeUpdateModal,
-            faqUpdateData,
+            qandaUpdateData,
             isModalOpen,
             update,
-            faq,
-            faqs,
+            qanda,
+            qandas,
             store,
             destroy,
             download

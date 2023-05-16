@@ -15,11 +15,15 @@ const routes = [
             },
             {
                 path: '/chat',
-                component: () => import(/* webpackChunkName: qanda */ './Pages/Chat/Chat.vue')
+                component: () => import(/* webpackChunkName: chat */ './Pages/Chat/Chat.vue')
             },
             {
                 path: '/dashboard',
-                component: () => import(/* webpackChunkName: qanda */ './Pages/Dashboard/Dashboard.vue')
+                component: () => import(/* webpackChunkName: dashbaord */ './Pages/Dashboard/Dashboard.vue')
+            },
+            {
+                path: '//qanda',
+                component: () => import(/* webpackChunkName: qanda */ './Pages/Qanda/Qanda.vue')
             }
         ]
     }

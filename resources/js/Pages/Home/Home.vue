@@ -46,13 +46,20 @@
                     <router-link
                         to="/admin_login"
                         class="block mt-4 lg:inline-block lg:mt-0 text-gray-100 hover:text-white mr-4"
-                        >Admin Login</router-link
+                        >{{auth ? 'Home' : 'Admin Login'}}</router-link
                     >
                     <router-link
                         to="/chat"
                         class="block mt-4 lg:inline-block lg:mt-0 text-gray-100 hover:text-white mr-4"
                         >Chat</router-link
                     >
+                    <router-link
+                        v-if="auth"
+                        to="/qanda"
+                        class="block mt-4 lg:inline-block lg:mt-0 text-gray-100 hover:text-white mr-4"
+                        >Add Qanda</router-link
+                    >
+                    
                 </div>
 
                 <div v-if="auth">

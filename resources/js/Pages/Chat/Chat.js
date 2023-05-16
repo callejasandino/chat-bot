@@ -6,7 +6,7 @@ export default {
         const chats = ref();
         const messageExists = ref(false);
         const chatStore = useChatStore();
-
+        let chatMode = ref('BSUML');
         const chat = reactive({
             question: "",
             answer: "",
@@ -46,6 +46,7 @@ export default {
         };
 
         const store = async () => {
+
             if (chat.question == "") {
                 alert("Question and answer must not be empty!");
                 return;
@@ -55,7 +56,13 @@ export default {
                 question: chat.question,
             };
 
-            await chatStore.store(chatData);
+            if(chatMode.value == 'BSUML'){
+                await chatStore.chatUsingML(chatData);
+            }else{
+                await chatStore.chatUsingChatGPT(chatData);
+            }
+
+            
             await index();
             chat.question = "";
 
@@ -63,6 +70,7 @@ export default {
         };
 
         return {
+            chatMode,
             messageExists,
             chat,
             chats,

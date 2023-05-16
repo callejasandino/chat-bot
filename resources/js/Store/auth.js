@@ -20,8 +20,9 @@ export const useAuthStore = defineStore('auth', {
 					router.push('/dashboard')
 				})
 				.catch(error => {
-					console.log(error);
-					this.error = error;
+					this.error = error.response.data.error;
+					alert(error.response.data.error);
+					return;
 				});
 		},
 

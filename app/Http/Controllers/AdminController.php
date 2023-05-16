@@ -14,4 +14,5 @@ class AdminController extends Controller
     public function logout() {
         return AdminService::logout();
     }
+
 }

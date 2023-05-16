@@ -12,8 +12,12 @@ class ChatController extends Controller
         return ChatService::index();
     }
 
-    public function store(Request $request) {
-        return ChatService::store($request);
+    public function chatUsingML(Request $request) {
+        return ChatService::chatUsingML($request);
+    }
+    
+    public function chatUsingChatGPT(Request $request) {
+        return ChatService::chatUsingChatGPT($request);
     }
 
     public function delete() {

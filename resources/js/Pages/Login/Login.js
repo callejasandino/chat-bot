@@ -1,13 +1,13 @@
-import { defineComponent, reactive } from "vue";
+import { defineComponent, reactive, ref } from "vue";
 import { useAuthStore } from "../../Store/auth";
 import router from "../../routes";
 import Cookies from "js-cookie";
 
 export default defineComponent({
     setup() {
-        const bearer = Cookies.get("bearer");
-
-        if (bearer != null) {
+        let bearer = ref(Cookies.get("bearer"));
+        let error = ref(null);
+        if (bearer.value != null) {
             router.push("dashboard");
         }
 
@@ -25,11 +25,15 @@ export default defineComponent({
 
             await authStore.login(userCredentials);
 
-            await Cookies.set("bearer", authStore.getAccessToken, {
-                expires: 1,
-            });
+            error.value = authStore.getError;
 
-            location.reload();
+            if(error.value == null) {
+                await Cookies.set("bearer", authStore.getAccessToken, {
+                    expires: 1,
+                });
+    
+                location.reload();
+            }
         };
 
         return {

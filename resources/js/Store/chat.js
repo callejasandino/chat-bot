@@ -18,9 +18,18 @@ export const useChatStore = defineStore("chat", {
                 .catch((error) => {});
         },
 
-        async store(chatData) {
+        async chatUsingML(chatData) {
             await axios
-                .post(`${name}/store`, chatData)
+                .post(`${name}/chatUsingML`, chatData)
+                .then((response) => {})
+                .catch((error) => {
+                    this.error = error;
+                });
+        },
+
+        async chatUsingChatGPT(chatData) {
+            await axios
+                .post(`${name}/chatUsingChatGPT`, chatData)
                 .then((response) => {})
                 .catch((error) => {
                     this.error = error;

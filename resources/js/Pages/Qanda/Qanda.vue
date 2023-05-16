@@ -1,41 +1,20 @@
-
 <template>
     <div class="container mx-auto my-auto mt-5">
-        <div class="mb-10">
-            <h1 class="mt-0 mb-2 text-5xl font-medium leading-tight text-primary text-white">
-            Welcome!
-        </h1>
-        </div>
-        
-        <hr>
-
-        <div class="mb-10 mt-10">
-            <h1 class="mt-0 mb-10 text-5xl font-medium leading-tight text-primary text-white">
-            Recalibrate Learning
-        </h1>
-
-            <button @click="download()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
-                Recalibrate
-            </button>
-        </div>
-
-        <hr>
-
         <div class="mt-10 mb-10">
             <h1 class="mt-0 text-5xl font-medium leading-tight text-primary text-white">
-                Add another entry of FAQ Here:
+                Add another entry of Qanda Here:
             </h1>
 
 
             <form class="space-y-4 md:space-y-6" action="#" @submit.prevent="store">
                 <div class="mt-5">
                     <label for="message" class="input_question_label">Question:</label>
-                    <input type="text" id="message" rows="4" class="input_question" placeholder="Your question here..." v-model="faq.question">
+                    <input type="text" id="message" rows="4" class="input_question" placeholder="Your question here..." v-model="qanda.question">
                 </div>
 
                 <div class="mt-5">
                     <label for="message" class="input_answer_label">Answer:</label>
-                    <textarea id="message" rows="4" class="answer_textarea" placeholder="Your answer here..." v-model="faq.answer"></textarea>
+                    <textarea id="message" rows="4" class="answer_textarea" placeholder="Your answer here..." v-model="qanda.answer"></textarea>
                 </div>
 
                 <div class="mt-5 ml-auto">
@@ -45,7 +24,7 @@
 
         </div>
 
-        <div v-if="faqs != null" class="mt-5">
+        <div v-if="qandas != null" class="mt-5">
             <table class="min-w-full divide-y  table-auto">
                 <thead class="divide-gray-900">
                     <tr>
@@ -56,20 +35,20 @@
                     </tr>
                 </thead>
                 <tbody class="divide-gray-900 ">
-                    <tr v-for="faq in faqs.faqs" :key="faq.id">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">{{faq.id}}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-white w-1/4">{{faq.question}}</td>
+                    <tr v-for="qanda in qandas.qandas" :key="qanda.id">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">{{qanda.id}}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-white w-1/4">{{qanda.question}}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-white">
                             <div class="answer_container">
-                                <p class="break-all">{{faq.answer}}</p>
+                                <p class="break-all">{{qanda.answer}}</p>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
-                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" @click="openUpdateModal(faq.id, faq.question, faq.answer)">
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" @click="openUpdateModal(qanda.id, qanda.question, qanda.answer)">
                                 Update
                                 </button>
-                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" @click="destroy(faq.id)">
+                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" @click="destroy(qanda.id)">
                                 Delete
                                 </button>
                             </div>    
@@ -95,12 +74,12 @@
                     <div class="p-6 space-y-6">
                         <div class="mt-5">
                             <label for="message" class="input_question_label">Question:</label>
-                            <input type="text" id="message" rows="4" class="input_question" placeholder="Your question here..." v-model="faqUpdateData.question">
+                            <input type="text" id="message" rows="4" class="input_question" placeholder="Your question here..." v-model="qandaUpdateData.question">
                         </div>
 
                         <div class="mt-5">
                             <label for="message" class="input_answer_label">Answer:</label>
-                            <textarea id="message" rows="4" class="answer_textarea" placeholder="Your answer here..." v-model="faqUpdateData.answer"></textarea>
+                            <textarea id="message" rows="4" class="answer_textarea" placeholder="Your answer here..." v-model="qandaUpdateData.answer"></textarea>
                         </div>
 
                     </div>
@@ -114,8 +93,8 @@
     </div>
 </template>
 
-<script src="./Dashboard.js"></script>
+<script src="./Qanda.js"></script>
 
-<style lang="scss" src="./Dashboard.scss" scoped>
+<style lang="scss" src="./Qanda.scss" scoped>
 
 </style>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\QandaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,11 +32,21 @@ Route::group(['middleware' => 'auth:sanctum'], function ($route) {
         $route->post('/update/{id}', [FaqController::class, 'update']);
         $route->post('/delete/{id}', [FaqController::class, 'delete']);
     });
+
+    Route::group(['prefix' => 'qandas'], function ($route){
+        $route->get('/index', [QandaController::class, 'index']);
+        $route->get('/download', [QandaController::class, 'download']);    
+        $route->post('/store', [QandaController::class, 'store']);
+        $route->post('/update/{id}', [QandaController::class, 'update']);
+        $route->post('/delete/{id}', [QandaController::class, 'delete']);
+        // $route->post('/register', [AdminController::class, 'login']);
+    });
 });
 
 Route::group(['prefix' => 'chat'], function ($route){
     $route->get('/', [ChatController::class, 'index']);
-    $route->post('/store', [ChatController::class, 'store']);
+    $route->post('/chatUsingML', [ChatController::class, 'chatUsingML']);
+    $route->post('/chatUsingChatGPT', [ChatController::class, 'chatUsingChatGPT']);
     $route->post('/delete', [ChatController::class, 'delete']);
 });
 
@@ -47,3 +58,5 @@ Route::group(['prefix' => 'auth'], function ($route){
     $route->post('/login', [AdminController::class, 'login']);    
     // $route->post('/register', [AdminController::class, 'login']);
 });
+
+

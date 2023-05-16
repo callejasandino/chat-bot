@@ -1,5 +1,23 @@
 <template>
     <div class="div_container">
+
+        <div v-if="chatMode == 'BSUML'" class="mb-10">
+            <span class="font-bold text-white mb-10 text-4xl">Chat using BSU ML</span>
+        </div>
+        <div v-else class="mb-10">
+            <span class="font-bold text-white mb-10 text-4xl">Chat using Chat GPT</span>
+        </div>
+        
+        <div class="flex justify-around mb-10">
+            <button type="button" class="input_button" @click="chatMode = 'BSUML'">
+                <span class="font-bold">Chat using BSU ML</span>
+            </button>
+
+            <button type="button" class="input_button" @click="chatMode = 'CHATGPT'">
+                <span class="font-bold">Chat using ChatGPT API</span>
+            </button>
+        </div>
+        
         <div v-if="chats" class="container mx-auto" id="message_container">
             <div
                 id="messages"
