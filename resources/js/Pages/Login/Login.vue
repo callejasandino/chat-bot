@@ -1,18 +1,15 @@
 <template>
     <section class="container mx-auto my-auto">
         <div class="flex flex-col items-center justify-center px-6 py-8">
-            <a
-                href="#"
-                class="flex items-center mb-6 text-2xl font-normal text-gray-900 dark:text-white"
-            >
-                <img
-                    class="w-8 h-8 mr-2"
-                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-                    alt="logo"
-                />
-                SPARTA / SPARTU Chatbot
-            </a>
+          
             <div class="field_container">
+
+                <div class="flex justify-center mt-10">
+                    <img src="../../../../public/files/images/download.png" class="logo" alt="" srcset="">
+                </div>
+
+                <h1 class="main_header text-center mt-10">SPARTA / SPARTU</h1>
+
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="header">Sign in to your account</h1>
                     <form

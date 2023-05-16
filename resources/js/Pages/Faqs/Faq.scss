@@ -1,5 +1,5 @@
 .section {
-    @apply bg-white dark:bg-gray-900;
+    @apply bg-white bg-slate-100;
 }
 
 .div_container {
@@ -7,19 +7,19 @@
 }
 
 .h2 {
-    @apply mb-8 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white;
+    @apply mb-8 text-4xl tracking-tight font-extrabold text-gray-900;
 }
 
 .svg {
-    @apply flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400;
+    @apply flex-shrink-0 mr-2 w-5 h-5 text-gray-900;
 }
 
 .question {
-    @apply flex items-center mb-4 text-lg font-medium text-gray-900 dark:text-white;
+    @apply flex items-center mb-4 text-lg font-medium text-gray-900;
 }
 
 .answer {
-    @apply text-gray-500 dark:text-gray-400;
+    @apply text-gray-500 text-gray-900;
 }
 
 .elementToFadeInAndOut {
