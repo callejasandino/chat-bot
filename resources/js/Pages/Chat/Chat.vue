@@ -1,13 +1,21 @@
 <template>
-    <div class="div_container">
-       
+    <div class="div_container container mx-auto">
+        
+        <div v-if="chatMode == 'BSUML'" class="mb-10">
+            <span class="font-bold text-gray-700 mb-10 text-4xl">Chat using SPARTA</span>
+        </div>
+        <div v-else class="mb-10">
+            <span class="font-bold text-gray-700 mb-10 text-4xl">Chat using SPARTU</span>
+        </div>
+        
+
         <div class="flex justify-around mb-10 button_container container mx-auto">
             <button type="button" class="input_button" @click="chatMode = 'BSUML'">
-                <span class="font-bold">Chat using BSU ML</span>
+                <span class="font-bold">Chat using SPARTA</span>
             </button>
 
             <button type="button" class="input_button" @click="chatMode = 'CHATGPT'">
-                <span class="font-bold">Chat using ChatGPT API</span>
+                <span class="font-bold">Chat using SPARTU</span>
             </button>
         </div>
         
